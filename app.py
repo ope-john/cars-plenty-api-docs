@@ -22,7 +22,13 @@ if navi == 'Documentation':
             'Vehicles', 
             'Vehicle', 
             'Sign up',
-            'Login'])
+            'Login',
+            'Search',
+            'Update Password',
+            'Confirm Email',
+            'Resend Confirmation',
+            'Post Vehicle',
+            'Post Verified Vehicle'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: https://carsplenty.com/api/v1/vehicles')
@@ -73,9 +79,14 @@ if navi == 'Documentation':
             st.code("""{
                 "data": {
                     "dealer_info": {
-                        "is_verified": true, #bool
+                        "account_created": "4 days ago", #str
+                        "email": "janedoe@email.com", #str
                         "name": "Jane Doe", #str
-                        "phone_number": "07020005000", #str
+                        "number_of_ads": 1, #int
+                        "phone_number": "08030001000", #str
+                        "profile_picture": null, #None
+                        "listings": [], #array
+                        "dealer_id": "61266ddef4bf66e9ccdbe938" #str
                     },
                     "vehicle": {
                         "_id": "6136c1543719c24549a6c0cf" #str,
@@ -126,15 +137,15 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Login':
             st.header('Login to carsplenty')
-            st.subheader('POST: https://carsplenty.com/api/v1/login')
+            st.subheader('GET: https://carsplenty.com/api/v1/login')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "johndoe@email.com",
-                "password": "password"
+                "email": "johndoe@email.com", #str
+                "password": "password" #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -157,5 +168,169 @@ if navi == 'Documentation':
             st.code("""{
                 "access token": "Token not generated", #str
                 "message": "Authentication Failed" #str
+            }""")
+            pass
+        if endpoints == 'Search':
+            st.header('Search for vehicles by brand, model, year, transmission type, colour')
+            st.subheader('GET: https://carsplenty.com/api/v1/search')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "search": "toyota" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data": [
+                    {
+                        "_id": "6136c1543719c24549a6c0cf", #str
+                        "brand": "Toyota", #str
+                        "colour": "White", #str
+                        "condition": "Foriegn Used", #str
+                        "fuel": "Petrol", #str
+                        "location": "Lagos State, Abule Egba", #str
+                        "main_image": "image", #str
+                        "model": "Venza", #str
+                        "posted": "Tue, 07 Sep 2021 02:19:35 GMT", #str
+                        "posted_by": "61266ddef4bf66e9ccdbe938", #str
+                        "price": "6,000,000", #str
+                        "seat": "5", #str
+                        "transmission": "Automatic", #str
+                        "verified": true, #bool
+                        "views": 2, #int
+                        "year": "2012" #str
+                    },...]
+            }""")
+            st.write('Response - 404')
+            st.code("""{
+                "data": {
+                    "message": "Query not found" #str
+                }
+            }""")
+            pass
+        if endpoints == 'Update Password':
+            st.header('Change user password')
+            st.subheader('PATCH: https://carsplenty.com/api/v1/update-password')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "janedoe@email.com", #str
+                "new_password": "password" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "message": "Success" #str
+            }""")
+            pass
+        if endpoints == 'Confirm Email':
+            st.header('Verifies user email')
+            st.subheader('GET: https://carsplenty.com/api/v1/confirm-email/{email-token}')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "message": "Email confirmed" #str
+            }""")
+            st.write('Response - 403')
+            st.code("""{
+                "message": "Email confirmation link expired" #expires after an hour
+            }""")
+            pass
+        if endpoints == 'Resend Confirmation':
+            st.header('Resends email confirmation link')
+            st.subheader('GET: https://carsplenty.com/api/v1/resend-link')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "theordoe@email.com" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{
+                "token": "InRoZW9yZG9lQGVtYWlsLmNvbSI.YTj7FA.UTkqFlaeA_m234CNm0UWW-AUTOk"
+                }
+            }""")
+            pass
+        if endpoints == 'Post Vehicle':
+            st.header('Post vehicle for verification')
+            st.subheader('POST: https://carsplenty.com/api/v1/post')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "brand": "Honda", #str
+                    "model": "Civic", #str
+                    "year": "2012", #str
+                    "colour": "Black", #str
+                    "condition": "Nigerian Used", #str
+                    "transmission": "Automatic", #str
+                    "mileage": "107000 km", #str
+                    "registered": true, #bool
+                    "location": "Lagos State, Ajah", #str
+                    "price": "3,000,000", #str
+                    "VIN": "DU4M4MYV7I3N", #str
+                    "posted_by": "6133a854917812bea8c5a51c", #str
+                    "negotiable": true, #bool
+                    "fuel": "Petrol", #str
+                    "seats": "5", #str
+                    "verified": false, #bool
+                    "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
+                    "main_image": "main_image", #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                'message': 'Reviewing' #str
+            }""")
+            pass
+        if endpoints == 'Post Verified Vehicle':
+            st.header('Post verified vehicle')
+            st.subheader('POST: https://carsplenty.com/api/v1/post-verified')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "brand": "Honda", #str
+                    "model": "Civic", #str
+                    "year": "2012", #str
+                    "colour": "Black", #str
+                    "condition": "Nigerian Used", #str
+                    "transmission": "Automatic", #str
+                    "mileage": "107000 km", #str
+                    "registered": true, #bool
+                    "location": "Lagos State, Ajah", #str
+                    "price": "3,000,000", #str
+                    "VIN": "DU4M4MYV7I3N", #str
+                    "posted_by": "6133a854917812bea8c5a51c", #str
+                    "negotiable": true, #bool
+                    "fuel": "Petrol", #str
+                    "seats": "5", #str
+                    "verified": true, #bool
+                    "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
+                    "main_image": "main_image", #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                'message': 'Success' #str
+            }""")
+            st.write('Response - 400')
+            st.code("""{
+                'message': 'Failed' #str
             }""")
             pass
