@@ -28,7 +28,11 @@ if navi == 'Documentation':
             'Confirm Email',
             'Resend Confirmation',
             'Post Vehicle',
-            'Post Verified Vehicle'])
+            'Post Verified Vehicle',
+            'Follow User',
+            'Save Vehicle',
+            'Saved Vehicles',
+            'Unsave Vehicle'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: https://carsplenty.com/api/v1/vehicles')
@@ -260,7 +264,7 @@ if navi == 'Documentation':
             st.write('Response - 200')
             st.code("""{
                 "data":{
-                "token": "InRoZW9yZG9lQGVtYWlsLmNvbSI.YTj7FA.UTkqFlaeA_m234CNm0UWW-AUTOk"
+                    "token": "InRoZW9yZG9lQGVtYWlsLmNvbSI.YTj7FA.UTkqFlaeA_m234CNm0UWW-AUTOk"
                 }
             }""")
             pass
@@ -332,5 +336,94 @@ if navi == 'Documentation':
             st.write('Response - 400')
             st.code("""{
                 'message': 'Failed' #str
+            }""")
+            pass
+        if endpoints == 'Follow User':
+            st.header('Follow a favorite vehicle dealer')
+            st.subheader('POST: https://carsplenty.com/api/v1/follow')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "theordoe@email.com" #str,
+                "follow_id": "61266ddef4bf66e9ccdbe938" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{
+                    "message": "User followed"
+                }
+            }""")
+            pass
+        if endpoints == 'Save Vehicle':
+            st.header('Save a favorite vehicle')
+            st.subheader('POST: https://carsplenty.com/api/v1/save')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "johndoe@email.com", #str
+                "vehicle_id": "612512e4f90e9bdfe9545acc" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{
+                    "message": "Saved"
+                }
+            }""")
+            pass
+        if endpoints == 'Saved Vehicles':
+            st.header('Gets all saved vehicles')
+            st.subheader('POST: https://carsplenty.com/api/v1/saved')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "user_id": "6133a854917812bea8c5a51c" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{[
+                    "_id": "6137d399750edde41dcb7a55",
+                    "brand": "Honda",
+                    "colour": "Black",
+                    "condition": "Nigerian Used",
+                    "fuel": "Petrol",
+                    "location": "Lagos State, Egbeda",
+                    "main_image": "main_images",
+                    "model": "Accord",
+                    "posted": "Tue, 07 Sep 2021 22:01:41 GMT",
+                    "posted_by": "6133a854917812bea8c5a51c",
+                    "price": "6,000,000",
+                    "seat": "5",
+                    "transmission": "Automatic",
+                    "verified": false,
+                    "year": "2014"
+                },...]
+            }""")
+            pass
+        if endpoints == 'Unsave Vehicle':
+            st.header('Delete a saved vehicle')
+            st.subheader('DELETE: https://carsplenty.com/api/v1/save')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "johndoe@email.com", #str
+                "vehicle_id": "612512e4f90e9bdfe9545acc" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{
+                    "message": "Success"
+                }
             }""")
             pass
