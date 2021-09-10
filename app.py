@@ -35,7 +35,7 @@ if navi == 'Documentation':
             'Unsave Vehicle'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
-            st.subheader('GET: https://carsplenty.com/api/v1/vehicles')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicles')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -70,7 +70,7 @@ if navi == 'Documentation':
             }""")
         if endpoints == 'Vehicle':
             st.header('Gets vehicle details for selected vehicle')
-            st.subheader('GET: https://carsplenty.com/api/v1/vehicle')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicle')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -118,7 +118,7 @@ if navi == 'Documentation':
             }""")
         if endpoints == 'Sign up':
             st.header('Signs up to carsplenty')
-            st.subheader('POST: https://carsplenty.com/api/v1/signup')
+            st.subheader('POST: www.carsplenty.com/api/v1/signup')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -141,7 +141,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Login':
             st.header('Login to carsplenty')
-            st.subheader('GET: https://carsplenty.com/api/v1/login')
+            st.subheader('GET: www.carsplenty.com/api/v1/login')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -176,7 +176,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Search':
             st.header('Search for vehicles by brand, model, year, transmission type, colour')
-            st.subheader('GET: https://carsplenty.com/api/v1/search')
+            st.subheader('GET: www.carsplenty.com/api/v1/search')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -216,7 +216,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Update Password':
             st.header('Change user password')
-            st.subheader('PATCH: https://carsplenty.com/api/v1/update-password')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/update-password')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -233,7 +233,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Confirm Email':
             st.header('Verifies user email')
-            st.subheader('GET: https://carsplenty.com/api/v1/confirm-email/{email-token}')
+            st.subheader('GET: www.carsplenty.com/api/v1/confirm-email/{email-token}')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -252,7 +252,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Resend Confirmation':
             st.header('Resends email confirmation link')
-            st.subheader('GET: https://carsplenty.com/api/v1/resend-link')
+            st.subheader('GET: www.carsplenty.com/api/v1/resend-link')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -270,7 +270,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Post Vehicle':
             st.header('Post vehicle for verification')
-            st.subheader('POST: https://carsplenty.com/api/v1/post')
+            st.subheader('POST: www.carsplenty.com/api/v1/post')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -303,7 +303,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Post Verified Vehicle':
             st.header('Post verified vehicle')
-            st.subheader('POST: https://carsplenty.com/api/v1/post-verified')
+            st.subheader('POST: www.carsplenty.com/api/v1/post-verified')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -340,7 +340,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Follow User':
             st.header('Follow a favorite vehicle dealer')
-            st.subheader('POST: https://carsplenty.com/api/v1/follow')
+            st.subheader('POST: www.carsplenty.com/api/v1/follow')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -359,7 +359,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Save Vehicle':
             st.header('Save a favorite vehicle')
-            st.subheader('POST: https://carsplenty.com/api/v1/save')
+            st.subheader('POST: www.carsplenty.com/api/v1/save')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -378,7 +378,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Saved Vehicles':
             st.header('Gets all saved vehicles')
-            st.subheader('POST: https://carsplenty.com/api/v1/saved')
+            st.subheader('POST: www.carsplenty.com/api/v1/saved')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -410,7 +410,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unsave Vehicle':
             st.header('Delete a saved vehicle')
-            st.subheader('DELETE: https://carsplenty.com/api/v1/save')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/save')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
