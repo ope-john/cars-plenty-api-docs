@@ -33,7 +33,11 @@ if navi == 'Documentation':
             'Save Vehicle',
             'Saved Vehicles',
             'Unsave Vehicle',
-            'Trending deals'])
+            'Trending deals',
+            'Get messages',
+            'Start message',
+            'Send message',
+            'Delete message'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: www.carsplenty.com/api/v1/vehicles')
