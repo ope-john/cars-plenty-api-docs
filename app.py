@@ -32,7 +32,8 @@ if navi == 'Documentation':
             'Follow User',
             'Save Vehicle',
             'Saved Vehicles',
-            'Unsave Vehicle'])
+            'Unsave Vehicle',
+            'Trending deals'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: www.carsplenty.com/api/v1/vehicles')
@@ -425,5 +426,141 @@ if navi == 'Documentation':
                 "data":{
                     "message": "Success"
                 }
+            }""")
+            pass
+        if endpoints == 'Trending deals':
+            st.header('Gets all trending deals')
+            st.subheader('GET: www.carsplenty.com/api/v1/trending')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "page_number": 1, #int
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data": [{
+                    "_id": "6136be2d3719c24549a6c0ce", #str
+                    "brand": "Ford", #str
+                    "colour": "Brown", #str
+                    "condition": "Foriegn Used", #str
+                    "fuel": "Petrol", #str
+                    "location": "Lagos State, Ikeja", #str
+                    "main_image": "main_image", #str
+                    "model": "Edge", #str
+                    "posted": "Tue, 07 Sep 2021 02:19:35 GMT", #str
+                    "posted_by": "6133a854917812bea8c5a51c", #str
+                    "price": "3,000,000", #str
+                    "seat": "5", #str
+                    "transmission": "Automatic", #str
+                    "verified": true, #bool
+                    "views": 0, #int
+                    "year": "2009" #strr
+                },...]
+            }""")
+            pass
+        if endpoints == 'Start message':
+            st.header('Start a message with another user')
+            st.subheader('POST: www.carsplenty.com/api/v1/start-message')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "sender_id": "61266f7ef4bf66e9ccdbe939" #str,
+                    "receiver_id": "6126774a6456949ebda14bf0" #str,
+                    "message": "Is the car available?" #str,
+                    "vehicle_id": "613730553719c24549a6c0d4" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Sent"
+                },...]
+            }""")
+            pass
+        if endpoints == 'Send message':
+            st.header('Send a message reply to another user')
+            st.subheader('POST: www.carsplenty.com/api/v1/send-message')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "sender_id": "61266ddef4bf66e9ccdbe938" #str,
+                    "chat": "yes but there are a lot of potential buyers" #str,
+                    "message_id": "613f12713a08934396038836" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Sent"
+                },...]
+            }""")
+            pass
+        if endpoints == 'Get messages':
+            st.header('Gets all messages for a specific user')
+            st.subheader('GET: www.carsplenty.com/api/v1/send-message')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "user_id": "61266ddef4bf66e9ccdbe938" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                    "messages": [{
+                        "chats": [
+                            {
+                                "sent_by": "John Doe", #str
+                                "text": "Is the car still available?", #str
+                                "time": "Mon, 13 Sep 2021 09:49:23 GMT" #str
+                            },
+                            {
+                                "sent_by": "Jane Doe", #str
+                                "text": "yes but there are a lot of potential buyers", #str
+                                "time": "Mon, 13 Sep 2021 10:00:24 GMT" #str
+                            }
+                        ],
+                        "message_id": "613f12713a08934396038836", #str
+                        "receiver_info": {
+                            "receiver_id": "61266ddef4bf66e9ccdbe938", #str
+                            "receiver_name": "Jane Doe" #str
+                            },
+                            "sender_info": {
+                                "sender_id": "6133a854917812bea8c5a51c", #str
+                                "sender_name": "John Doe" #str
+                            },
+                        "vehicle_info": {
+                            "brand": "Toyota", #str
+                            "model": "Yaris", #str
+                            "year": "2014", #str
+                            "main_image": "image.jpg" #base64 str
+                            }
+                        }
+                    ]
+                },...]
+            }""")
+            pass
+        if endpoints == 'Delete message':
+            st.header('Delete a message with another user')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/delete-message')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "user_id": "61266f7ef4bf66e9ccdbe939", #str
+                    "message_id": "613f15ef403ccec0ba6618db" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Deleted" #str
+                },...]
             }""")
             pass
