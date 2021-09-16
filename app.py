@@ -30,6 +30,7 @@ if navi == 'Documentation':
             'Post Vehicle',
             'Post Verified Vehicle',
             'Follow User',
+            'Unfollow User'
             'Save Vehicle',
             'Saved Vehicles',
             'Unsave Vehicle',
@@ -40,15 +41,15 @@ if navi == 'Documentation':
             'Delete message'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
-            st.subheader('GET: www.carsplenty.com/api/v1/vehicles')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicles?page_number=1')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
+            st.write('Request Parameter')
             st.code("""
             {
-                "page_number": 1 #int
+                "page_number" = 1 #int
             }
             """)
             st.write('Response')
@@ -75,14 +76,14 @@ if navi == 'Documentation':
             }""")
         if endpoints == 'Vehicle':
             st.header('Gets vehicle details for selected vehicle')
-            st.subheader('GET: www.carsplenty.com/api/v1/vehicle')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicle?id=6136c1543719c24549a6c0cf')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
+            st.write('Request parameters')
             st.code("""{
-                "vehicle_id": "6136c1543719c24549a6c0cf" #str
+                vehicle_id = 6136c1543719c24549a6c0cf #str
             }""")
             st.write('Response')
             st.code("""{
@@ -146,7 +147,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Login':
             st.header('Login to carsplenty')
-            st.subheader('GET: www.carsplenty.com/api/v1/login')
+            st.subheader('POST: www.carsplenty.com/api/v1/login')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -181,14 +182,14 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Search':
             st.header('Search for vehicles by brand, model, year, transmission type, colour')
-            st.subheader('GET: www.carsplenty.com/api/v1/search')
+            st.subheader('GET: www.carsplenty.com/api/v1/search?query=toyota')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "search": "toyota" #str
+                query = toyota #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -362,6 +363,25 @@ if navi == 'Documentation':
                 }
             }""")
             pass
+        if endpoints == 'Unfollow User':
+            st.header('Follow a favorite vehicle dealer')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/unfollow')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "theordoe@email.com" #str,
+                "follow_id": "61266ddef4bf66e9ccdbe938" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                "data":{
+                    "message": "User UNfollowed"
+                }
+            }""")
+            pass
         if endpoints == 'Save Vehicle':
             st.header('Save a favorite vehicle')
             st.subheader('POST: www.carsplenty.com/api/v1/save')
@@ -382,15 +402,15 @@ if navi == 'Documentation':
             }""")
             pass
         if endpoints == 'Saved Vehicles':
-            st.header('Gets all saved vehicles')
-            st.subheader('POST: www.carsplenty.com/api/v1/saved')
+            st.header('Gets all saved vehicles by user')
+            st.subheader('GET: www.carsplenty.com/api/v1/saved?id=6133a854917812bea8c5a51c')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "user_id": "6133a854917812bea8c5a51c" #str
+                "id" = "6133a854917812bea8c5a51c" #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -434,14 +454,14 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Trending deals':
             st.header('Gets all trending deals')
-            st.subheader('GET: www.carsplenty.com/api/v1/trending')
+            st.subheader('GET: www.carsplenty.com/api/v1/trending?page_number=1')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
+            st.write('Request parameter')
             st.code("""{
-                "page_number": 1, #int
+                page_number = 1, #int
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -506,14 +526,14 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Get messages':
             st.header('Gets all messages for a specific user')
-            st.subheader('GET: www.carsplenty.com/api/v1/send-message')
+            st.subheader('GET: www.carsplenty.com/api/v1/messages?id=61266ddef4bf66e9ccdbe938')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
+            st.write('Request parameter')
             st.code("""{
-                    "user_id": "61266ddef4bf66e9ccdbe938" #str
+                    id = "61266ddef4bf66e9ccdbe938 #str
             }""")
             st.write('Response - 200')
             st.code("""{
