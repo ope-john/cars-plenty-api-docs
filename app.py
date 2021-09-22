@@ -20,7 +20,8 @@ if navi == 'Documentation':
         "Endpoints",
         [
             'Vehicles', 
-            'Vehicle', 
+            'Vehicle',
+            'Auth Vehicle',
             'Sign up',
             'Login',
             'Search',
@@ -122,9 +123,56 @@ if navi == 'Documentation':
                     }
                 }
             }""")
+        if endpoints == 'Auth Vehicle':
+            st.header('Gets vehicle details for authenticated user')
+            st.subheader('GET: www.carsplenty.com/api/auth/v1/vehicle?id=6136c1543719c24549a6c0cf')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response')
+            st.code("""{
+                "data": {
+                    "dealer_info": {
+                        "account_created": "3 weeks ago", #str
+                        "dealer_id": "61266f7ef4bf66e9ccdbe939", #str
+                        "email": "adaezedoe@email.com", #str
+                        "followers": 1, #int
+                        "is_following": true, #bool
+                        "is_verified": false, #bool
+                        "last_seen": "3 weeks ago", #str
+                        "listings": [], #array
+                        "name": "Yetunde Adaeze", #str
+                        "phone_number": "07080004000", #str
+                        "profile_picture": null #None
+                    },
+                    "vehicle": {
+                        "_id": "6136c1543719c24549a6c0cf" #str,
+                        "brand": "Toyota", #str
+                        "colour": "White", #str
+                        "condition": "Foriegn Used", #str
+                        "fuel": "Petrol", #str
+                        "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
+                        "location": "Lagos State, Abule Egba", #str
+                        "main_image": "main_image", #str
+                        "mileage": "43000 km", #str
+                        "model": "Venza", #str
+                        "negotiable": false, #bool
+                        "posted": "1 day ago", #str
+                        "posted_by": "61266ddef4bf66e9ccdbe938", #str
+                        "price": 6,000,000, #int
+                        "registered": false, #bool
+                        "seat": "5", #str
+                        "transmission": "Automatic", #str
+                        "verified": true, #bool
+                        "views": 1, #int
+                        "year": 2012 #int
+                    }
+                }
+            }""")
         if endpoints == 'Sign up':
             st.header('Signs up to carsplenty')
-            st.subheader('POST: www.carsplenty.com/api/v1/signup')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/signup')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -147,7 +195,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Login':
             st.header('Login to carsplenty')
-            st.subheader('POST: www.carsplenty.com/api/v1/login')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/login')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -159,24 +207,14 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
-                "data": {
-                    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzMTEyNDk5OCwianRpIjoiZmY1MDBiMjgtMTZlOS00OTM1LTliMjYtMmEwOGE0MzhlMWEwIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2MTMzYTg1NDkxNzgxMmJlYThjNWE1MWMiLCJuYmYiOjE2MzExMjQ5OTgsImV4cCI6MTYzMzcxNjk5OH0.CRsHKed1MKf5H-9OrP6eeCTzb2bh4rrQTfIGcFPuDJc", #str
-                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzMTEyNDk5OCwianRpIjoiYjY2NDFjNmYtZWUyMy00ZjlhLThhZmMtMDRjNGVhZjIxYzk1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYxMzNhODU0OTE3ODEyYmVhOGM1YTUxYyIsIm5iZiI6MTYzMTEyNDk5OCwiZXhwIjoxNjMzNzE2OTk4fQ.nQYpE91ChJ5ImF3v01aYs7uQNq2LGFqieAu3yP5xRQ4", #str
-                    "user_data": {
-                        "account_created": "4 days ago", #str
-                        "email": "johndoe@email.com", #str
-                        "followers": 0, #int
-                        "name": "John Doe", #str
-                        "phone_number": "08030001000", #str
-                        "profile_picture": null, #none
-                        "user_id": "6133a854917812bea8c5a51c" #str
-                        }
-                    }
-                }
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI
+                6ZmFsc2UsImlhdCI6MTYzMjIxNzM1MiwianRpIjoiMmMxMDg5ZjEtZjZmZS
+                00MmIxLWFlNGEtYWJkY2MwZmE5OTdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6
+                IjYxMjY2ZGRlZjRiZjY2ZTljY2RiZTkzOCIsIm5iZiI6MTYzMjIxNzM1MiwiZXhw
+                IjoxNjM0ODA5MzUyfQ.j3OZwr7Q8qh7mJNlAvnxebbMD8eBtZNBfera0Z-vr9M" #str
             }""")
             st.write('Response - 403')
             st.code("""{
-                "access token": "Token not generated", #str
                 "message": "Authentication Failed" #str
             }""")
             pass
@@ -222,24 +260,24 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Update Password':
             st.header('Change user password')
-            st.subheader('PATCH: www.carsplenty.com/api/v1/update-password')
+            st.subheader('PATCH: www.carsplenty.com/api/auth/v1/update-password')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "janedoe@email.com", #str
-                "new_password": "password" #str
+                "old_password": "password", #str
+                "new_password": "password1" #str
             }""")
             st.write('Response - 200')
             st.code("""{
-                "message": "Success" #str
+                "Password updated"
             }""")
             pass
         if endpoints == 'Confirm Email':
             st.header('Verifies user email')
-            st.subheader('GET: www.carsplenty.com/api/v1/confirm-email/{email-token}')
+            st.subheader('GET: www.carsplenty.com/api/auth/v1/confirm-email/{email-token}')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -258,7 +296,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Resend Confirmation':
             st.header('Resends email confirmation link')
-            st.subheader('GET: www.carsplenty.com/api/v1/resend-link')
+            st.subheader('GET: www.carsplenty.com/api/auth/v1/resend-link')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -285,7 +323,7 @@ if navi == 'Documentation':
             st.code("""{
                     "brand": "Honda", #str
                     "model": "Civic", #str
-                    "year": "2012", #str
+                    "year": 2012, #int
                     "colour": "Black", #str
                     "condition": "Nigerian Used", #str
                     "transmission": "Automatic", #str
@@ -294,7 +332,6 @@ if navi == 'Documentation':
                     "location": "Lagos State, Ajah", #str
                     "price": "3,000,000", #str
                     "VIN": "DU4M4MYV7I3N", #str
-                    "posted_by": "6133a854917812bea8c5a51c", #str
                     "negotiable": true, #bool
                     "fuel": "Petrol", #str
                     "seats": "5", #str
@@ -309,7 +346,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Post Verified Vehicle':
             st.header('Post verified vehicle')
-            st.subheader('POST: www.carsplenty.com/api/v1/post-verified')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/post-verified')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -346,15 +383,14 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Follow User':
             st.header('Follow a favorite vehicle dealer')
-            st.subheader('POST: www.carsplenty.com/api/v1/follow')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/follow')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "theordoe@email.com" #str,
-                "follow_id": "61266ddef4bf66e9ccdbe938" #str
+                "following_id": "61266ddef4bf66e9ccdbe938" #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -365,7 +401,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unfollow User':
             st.header('Follow a favorite vehicle dealer')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/unfollow')
+            st.subheader('DELETE: www.carsplenty.com/api/auth/v1/unfollow')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -384,14 +420,13 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Save Vehicle':
             st.header('Save a favorite vehicle')
-            st.subheader('POST: www.carsplenty.com/api/v1/save')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/save')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "johndoe@email.com", #str
                 "vehicle_id": "612512e4f90e9bdfe9545acc" #str
             }""")
             st.write('Response - 200')
@@ -403,15 +438,11 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Saved Vehicles':
             st.header('Gets all saved vehicles by user')
-            st.subheader('GET: www.carsplenty.com/api/v1/saved?id=6133a854917812bea8c5a51c')
+            st.subheader('GET: www.carsplenty.com/api/auth/v1/saved?id=6133a854917812bea8c5a51c')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                "id" = "6133a854917812bea8c5a51c" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                 "data":{[
@@ -435,14 +466,13 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unsave Vehicle':
             st.header('Delete a saved vehicle')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/save')
+            st.subheader('DELETE: www.carsplenty.com/api/auth/v1/save')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "johndoe@email.com", #str
                 "vehicle_id": "612512e4f90e9bdfe9545acc" #str
             }""")
             st.write('Response - 200')
@@ -487,7 +517,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Start message':
             st.header('Start a message with another user')
-            st.subheader('POST: www.carsplenty.com/api/v1/start-message')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/start-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -507,14 +537,13 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Send message':
             st.header('Send a message reply to another user')
-            st.subheader('POST: www.carsplenty.com/api/v1/send-message')
+            st.subheader('POST: www.carsplenty.com/api/auth/v1/send-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                    "sender_id": "61266ddef4bf66e9ccdbe938" #str,
                     "chat": "yes but there are a lot of potential buyers" #str,
                     "message_id": "613f12713a08934396038836" #str
             }""")
@@ -526,15 +555,11 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Get messages':
             st.header('Gets all messages for a specific user')
-            st.subheader('GET: www.carsplenty.com/api/v1/messages?id=61266ddef4bf66e9ccdbe938')
+            st.subheader('GET: www.carsplenty.com/api/auth/v1/messages')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Request parameter')
-            st.code("""{
-                    id = "61266ddef4bf66e9ccdbe938 #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "messages": [{
@@ -572,16 +597,11 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Delete message':
             st.header('Delete a message with another user')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/delete-message')
+            st.subheader('DELETE: www.carsplenty.com/api/auth/v1/delete-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                    "user_id": "61266f7ef4bf66e9ccdbe939", #str
-                    "message_id": "613f15ef403ccec0ba6618db" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "message": "Deleted" #str
