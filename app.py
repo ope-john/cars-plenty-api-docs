@@ -77,15 +77,11 @@ if navi == 'Documentation':
             }""")
         if endpoints == 'Vehicle':
             st.header('Gets vehicle details for selected vehicle')
-            st.subheader('GET: www.carsplenty.com/api/v1/vehicle?id=6136c1543719c24549a6c0cf')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicle/6136c1543719c24549a6c0cf')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Request parameters')
-            st.code("""{
-                vehicle_id = 6136c1543719c24549a6c0cf #str
-            }""")
             st.write('Response')
             st.code("""{
                     "dealer_info": {
