@@ -486,7 +486,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unsave Vehicle':
             st.header('Delete a saved vehicle')
-            st.subheader('DELETE: www.carsplenty.com/api/auth/v1/save')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/unsave')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -535,7 +535,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Start message':
             st.header('Start a message with another user')
-            st.subheader('POST: www.carsplenty.com/api/auth/v1/start-message')
+            st.subheader('POST: www.carsplenty.com/api/v1/start-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -554,7 +554,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Send message':
             st.header('Send a message reply to another user')
-            st.subheader('POST: www.carsplenty.com/api/auth/v1/send-message')
+            st.subheader('POST: www.carsplenty.com/api/v1/send-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -571,7 +571,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Get messages':
             st.header('Gets all messages for a specific user')
-            st.subheader('GET: www.carsplenty.com/api/auth/v1/messages')
+            st.subheader('GET: www.carsplenty.com/api/v1/messages')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -613,7 +613,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Delete message':
             st.header('Delete a message with another user')
-            st.subheader('DELETE: www.carsplenty.com/api/auth/v1/delete-message')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/delete-message')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
