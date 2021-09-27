@@ -432,8 +432,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                "email": "theordoe@email.com" #str,
-                "follow_id": "61266ddef4bf66e9ccdbe938" #str
+                "following_id": "61266ddef4bf66e9ccdbe938" #str
             }""")
             st.write('Response - 200')
             st.code("""{
