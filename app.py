@@ -23,7 +23,7 @@ if navi == 'Documentation':
             'Vehicle',
             'Sign up',
             'Login',
-            'Refresh'
+            'Refresh',
             'User',
             'Search',
             'Filters',
