@@ -23,6 +23,7 @@ if navi == 'Documentation':
             'Vehicle',
             'Sign up',
             'Login',
+            'Refresh'
             'User',
             'Search',
             'Filters',
@@ -50,7 +51,8 @@ if navi == 'Documentation':
             st.write('Request Parameter')
             st.code("""
             {
-                "page_number" = 1 #int
+                "limit" = 5 
+                "offset" = 0
             }
             """)
             st.write('Response')
@@ -152,6 +154,35 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
+                "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzMjU2MTI2Nywian
+                RpIjoiMmNiMDAxNWYtMDkxNS00NTQ0LWJjNzItNjQwYzM0NzQ5YWUwIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2MTI2NmRkZWY
+                0YmY2NmU5Y2NkYmU5MzgiLCJuYmYiOjE2MzI1NjEyNjcsImV4cCI6MTYzNTE1MzI2N30.6QbHkIY0ViflYmRjJPUowWTZw-U9lQzkQ
+                fMOyd6p84o",
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI
+                6ZmFsc2UsImlhdCI6MTYzMjIxNzM1MiwianRpIjoiMmMxMDg5ZjEtZjZmZS
+                00MmIxLWFlNGEtYWJkY2MwZmE5OTdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6
+                IjYxMjY2ZGRlZjRiZjY2ZTljY2RiZTkzOCIsIm5iZiI6MTYzMjIxNzM1MiwiZXhw
+                IjoxNjM0ODA5MzUyfQ.j3OZwr7Q8qh7mJNlAvnxebbMD8eBtZNBfera0Z-vr9M" #str
+            }""")
+            st.write('Response - 403')
+            st.code("""{
+                    "Authentication Failed" #str
+            }""")
+            pass
+        if endpoints == 'Refresh':
+            st.header('Refreshes access tokens')
+            st.subheader('POST: www.carsplenty.com/api/v1/refresh')
+            st.write('Headers')
+            st.code('"Authorization": "refresh_token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                "email": "johndoe@email.com", #str
+                "password": "password" #str
+            }""")
+            st.write('Response - 200')
+            st.code("""{
                 "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI
                 6ZmFsc2UsImlhdCI6MTYzMjIxNzM1MiwianRpIjoiMmMxMDg5ZjEtZjZmZS
                 00MmIxLWFlNGEtYWJkY2MwZmE5OTdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6
@@ -173,10 +204,6 @@ if navi == 'Documentation':
             st.write('Json request')
             st.write('Response - 200')
             st.code("""{
-                "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzMjU2MTI2Nywian
-                RpIjoiMmNiMDAxNWYtMDkxNS00NTQ0LWJjNzItNjQwYzM0NzQ5YWUwIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2MTI2NmRkZWY
-                0YmY2NmU5Y2NkYmU5MzgiLCJuYmYiOjE2MzI1NjEyNjcsImV4cCI6MTYzNTE1MzI2N30.6QbHkIY0ViflYmRjJPUowWTZw-U9lQzkQ
-                fMOyd6p84o",
                 "user_data": {
                     "account_created": "1 month ago",
                     "email": "janedoe@email.com",
@@ -397,6 +424,7 @@ if navi == 'Documentation':
                     "verified": true, #bool
                     "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
                     "main_image": "main_image", #str
+                    "engine": "4-Plugs"
             }""")
             st.write('Response - 200')
             st.code("""{
