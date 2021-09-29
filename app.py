@@ -43,7 +43,7 @@ if navi == 'Documentation':
             'Delete message'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
-            st.subheader('GET: www.carsplenty.com/api/v1/vehicles?page_number=1')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicles?limit=5&offset=0')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -188,10 +188,6 @@ if navi == 'Documentation':
                 00MmIxLWFlNGEtYWJkY2MwZmE5OTdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6
                 IjYxMjY2ZGRlZjRiZjY2ZTljY2RiZTkzOCIsIm5iZiI6MTYzMjIxNzM1MiwiZXhw
                 IjoxNjM0ODA5MzUyfQ.j3OZwr7Q8qh7mJNlAvnxebbMD8eBtZNBfera0Z-vr9M" #str
-            }""")
-            st.write('Response - 403')
-            st.code("""{
-                    "Authentication Failed" #str
             }""")
             pass
         if endpoints == 'User':
@@ -529,14 +525,15 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Trending deals':
             st.header('Gets all trending deals')
-            st.subheader('GET: www.carsplenty.com/api/v1/trending?page_number=1')
+            st.subheader('GET: www.carsplenty.com/api/v1/vehicles?limit=5&offset=0')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Request parameter')
             st.code("""{
-                page_number = 1, #int
+                "limit" = 5 
+                "offset" = 0
             }""")
             st.write('Response - 200')
             st.code("""{
