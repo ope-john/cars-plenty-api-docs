@@ -333,9 +333,6 @@ if navi == 'Documentation':
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "Email confirmed" #str
@@ -393,55 +390,13 @@ if navi == 'Documentation':
                     'Reviewing' #str
             }""")
             pass
-        if endpoints == 'Post Verified Vehicle':
-            st.header('Post verified vehicle')
-            st.subheader('POST: www.carsplenty.com/api/v1/post-verified')
-            st.write('Headers')
-            st.code('"Authorization": "Bearer Token"')
-            st.code('"Content-type": "Application/json"')
-            st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                    "brand": "Honda", #str
-                    "model": "Civic", #str
-                    "year": "2012", #str
-                    "colour": "Black", #str
-                    "condition": "Nigerian Used", #str
-                    "transmission": "Automatic", #str
-                    "mileage": "107000 km", #str
-                    "registered": true, #bool
-                    "location": "Lagos State, Ajah", #str
-                    "price": "3,000,000", #str
-                    "VIN": "DU4M4MYV7I3N", #str
-                    "posted_by": "6133a854917812bea8c5a51c", #str
-                    "negotiable": true, #bool
-                    "fuel": "Petrol", #str
-                    "seats": "5", #str
-                    "verified": true, #bool
-                    "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
-                    "main_image": "main_image", #str
-                    "engine": "4-Plugs"
-            }""")
-            st.write('Response - 200')
-            st.code("""{
-                    'Success' #str
-                }""")
-            st.write('Response - 400')
-            st.code("""{
-                    'Failed' #str
-                }""")
-            pass
         if endpoints == 'Follow User':
             st.header('Follow a favorite vehicle dealer')
-            st.subheader('POST: www.carsplenty.com/api/v1/follow')
+            st.subheader('POST: www.carsplenty.com/api/v1/follow/61266ddef4bf66e9ccdbe938')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                "following_id": "61266ddef4bf66e9ccdbe938" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "User followed"
@@ -449,15 +404,11 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unfollow User':
             st.header('Follow a favorite vehicle dealer')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/unfollow')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/unfollow/61266ddef4bf66e9ccdbe938')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                "following_id": "61266ddef4bf66e9ccdbe938" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "User Unfollowed"
@@ -465,15 +416,12 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Save Vehicle':
             st.header('Save a favorite vehicle')
-            st.subheader('POST: www.carsplenty.com/api/v1/save')
+            st.subheader('POST: www.carsplenty.com/api/v1/save/612512e4f90e9bdfe9545acc')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
-            st.code("""{
-                "vehicle_id": "612512e4f90e9bdfe9545acc" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "Saved"
@@ -481,7 +429,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Saved Vehicles':
             st.header('Gets all saved vehicles by user')
-            st.subheader('GET: www.carsplenty.com/api/v1/saved?id=6133a854917812bea8c5a51c')
+            st.subheader('GET: www.carsplenty.com/api/v1/saved')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -509,15 +457,11 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Unsave Vehicle':
             st.header('Delete a saved vehicle')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/unsave')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/unsave/612512e4f90e9bdfe9545acc')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                "vehicle_id": "612512e4f90e9bdfe9545acc" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                     "Success"
@@ -525,7 +469,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Trending deals':
             st.header('Gets all trending deals')
-            st.subheader('GET: www.carsplenty.com/api/v1/vehicles?limit=5&offset=0')
+            st.subheader('GET: www.carsplenty.com/api/v1/trending?limit=5&offset=0')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
@@ -637,7 +581,7 @@ if navi == 'Documentation':
             pass
         if endpoints == 'Delete message':
             st.header('Delete a message with another user')
-            st.subheader('DELETE: www.carsplenty.com/api/v1/delete-message')
+            st.subheader('DELETE: www.carsplenty.com/api/v1/delete-message/613f12713a08934396038836')
             st.write('Headers')
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
@@ -645,5 +589,120 @@ if navi == 'Documentation':
             st.write('Response - 200')
             st.code("""{
                     "Deleted" #str
+                }""")
+            pass
+    if sub_nav == 'Auction':
+        endpoints = st.sidebar.selectbox(
+        "Endpoints",
+        [
+            'Auctions', 
+            'Auction',
+            'Bid',
+        ])
+        if endpoints == 'Auctions':
+            st.header('Gets all vehicles up for auction')
+            st.subheader('GET: www.carsplenty.com/api/v1/auctions')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                    "next_page": "?limit=5&offset=5",
+                    "prev_page": "?limit=5&offset=-5",
+                    "vehicles": [
+                        {
+                            "_id": "615327251e50c460ebdf3289",
+                            "brand": "Toyota",
+                            "color": "Black",
+                            "completed": false,
+                            "condition": "Foreign Used",
+                            "current_bid": 550000,
+                            "end_time": "Sun, 03 Oct 2021 02:19:35 GMT",
+                            "fuel": "Petrol",
+                            "main_image": "main_image",
+                            "mileage": "166200 km",
+                            "minimum_bid": 500000,
+                            "model": "Matrix",
+                            "posted": "3 days ago",
+                            "selling_price": 700000,
+                            "start_time": "Fri, 01 Oct 2021 02:19:35 GMT",
+                            "status": true,
+                            "transmission": "Automatic",
+                            "year": "2007"
+                        },...]
+                }""")
+            pass
+        if endpoints == 'Auction':
+            st.header('Gets details of vehicle up for auction')
+            st.subheader('GET: www.carsplenty.com/api/v1/auction/615327251e50c460ebdf3289')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                    "auction": {
+                        "_id": "615327251e50c460ebdf3289",
+                        "bids": [
+                            {
+                                "bid": 550000,
+                                "bidder": "Ron Doe",
+                                "bidder_email": "rondoe@email.com",
+                                "bidder_id": "61365a6b9578b7708a9791d3",
+                                "bidder_number": "07020006000",
+                                "time": "Tue, 28 Sep 2021 17:34:44 GMT"
+                            }
+                        ],
+                        "brand": "Toyota",
+                        "color": "Black",
+                        "completed": false,
+                        "condition": "Foreign Used",
+                        "current_bid": 550000,
+                        "end_time": "Sun, 03 Oct 2021 02:19:35 GMT",
+                        "end_timeago": "in 1 day",
+                        "fuel": "Petrol",
+                        "images": [
+                            "image_1",
+                            "image_2",
+                            "image_3",
+                            "image_4"
+                        ],
+                        "inspector_report": "report.pdf",
+                        "main_image": "main_image",
+                        "mileage": "166200 km",
+                        "minimum_bid": 500000,
+                        "model": "Matrix",
+                        "posted": "3 days ago",
+                        "seats": "5",
+                        "selling_price": 700000,
+                        "start_time": "Fri, 01 Oct 2021 02:19:35 GMT",
+                        "start_timeago": "14 hours ago",
+                        "status": true,
+                        "transmission": "Automatic",
+                        "year": "2007"
+                    },
+                    "latest_bid": {
+                        "bid": 550000,
+                        "time": "10 hours ago""
+                    },
+                    "status": true #If false bid will be disabled
+                }""")
+            pass
+        if endpoints == 'Bid':
+            st.header('Bid for vehicle up for auction')
+            st.subheader('POST: www.carsplenty.com/api/v1/bid')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "auction_id": "615327251e50c460ebdf3289",
+                    "new_bid": 550000
+            }""")
+            st.write('Response - 200')
+            st.code("""{              
+                    "Bid placed"
                 }""")
             pass
