@@ -40,7 +40,8 @@ if navi == 'Documentation':
             'Get messages',
             'Start message',
             'Send message',
-            'Delete message'])
+            'Delete message',
+            'Close Lisitng'])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: www.carsplenty.com/api/v1/vehicles?limit=5&offset=0')
@@ -48,34 +49,38 @@ if navi == 'Documentation':
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Request Parameter')
-            st.code("""
-            {
-                "limit" = 5 
-                "offset" = 0
-            }
-            """)
             st.write('Response')
             st.code(""" 
             {
-                [{
-                    "_id": "6136be2d3719c24549a6c0ce", #str
-                    "brand": "Ford", #str
-                    "colour": "Brown", #str
-                    "condition": "Foriegn Used", #str
-                    "fuel": "Petrol", #str
-                    "location": "Lagos State, Ikeja", #str
-                    "main_image": "main_image", #str
-                    "model": "Edge", #str
-                    "posted": "Tue, 07 Sep 2021 02:19:35 GMT", #str
-                    "posted_by": "6133a854917812bea8c5a51c", #str
-                    "price": "3,000,000", #str
-                    "seat": "5", #str
-                    "transmission": "Automatic", #str
-                    "verified": true, #bool
-                    "views": 0, #int
-                    "year": "2009" #strr
-                }]
+                "next_page": "?limit=5&offset=5",
+                "prev_page": "?limit=5&offset=-5",
+                "vehicles": [
+                    {
+                        "VIN": "HONDAPILOT412345678", #str
+                        "_id": "6162d8a8280fcec110a50d78", #str
+                        "brand": "Honda", #str
+                        "color": "Wine", #str
+                        "condition": "Nigerian Used", #str
+                        "description": "Very neat and durable", #str
+                        "engine": "4-Plugs", #str
+                        "fuel": "Petrol", #str
+                        "location": "Lagos State, Ajah", #str
+                        "main_image": "image_main", #str
+                        "mileage": "163000 km", #str
+                        "model": "Pilot", #str
+                        "posted": "22 hours ago", #str
+                        "posted_by": "61266ddef4bf66e9ccdbe938", #str
+                        "price": 3000000, #int
+                        "promoted": false, #boolean
+                        "review_id": "b253baaf-8f48-4ca4-9ef5-aa222e42d472", #str
+                        "reviewed": true, #boolean
+                        "seat": "5", #str
+                        "status": true, #boolean
+                        "transmission": "Automatic", #str
+                        "views": 10, #int
+                        "year": 2006 #int
+                    },...
+                ]
             }""")
         if endpoints == 'Vehicle':
             st.header('Gets vehicle details for selected vehicle')
@@ -97,26 +102,32 @@ if navi == 'Documentation':
                         "dealer_id": "61266ddef4bf66e9ccdbe938" #str
                     },
                     "vehicle": {
-                        "_id": "6136c1543719c24549a6c0cf" #str,
-                        "brand": "Toyota", #str
-                        "colour": "White", #str
+                        "VIN": "HONDACIVIC412345678", #str
+                        "_id": "6162dd2a280fcec110a50d79", #str
+                        "brand": "Honda", #str
+                        "color": "Wine", #str
                         "condition": "Foriegn Used", #str
+                        "description": "Very nice", #str
+                        "engine": "4-Plugs", #str
                         "fuel": "Petrol", #str
-                        "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
-                        "location": "Lagos State, Abule Egba", #str
-                        "main_image": "main_image", #str
-                        "mileage": "43000 km", #str
-                        "model": "Venza", #str
-                        "negotiable": false, #bool
-                        "posted": "1 day ago", #str
+                        "images": ["image_1, "image_2", "image_3], #arr
+                        "location": "Lagos State, Ajah", #str
+                        "main_image": "image_main", #str
+                        "mileage": "63000 km", #str
+                        "model": "Civic", #str
+                        "negotiable": true, #boolean
+                        "posted": "22 hours ago", #str
                         "posted_by": "61266ddef4bf66e9ccdbe938", #str
-                        "price": "6,000,000", #str
-                        "registered": false, #bool
-                        "seat": "5", #str
+                        "price": 6000000, #int
+                        "promoted": false, #boolean
+                        "registered": true, #boolean
+                        "review_id": "e2c10c3e-215a-4756-98c6-14b80eb65595", #str
+                        "reviewed": true, #boolean
+                        "seat": "5", #int
+                        "status": true, #boolean
                         "transmission": "Automatic", #str
-                        "verified": true, #bool
-                        "views": 1, #int
-                        "year": "2012" #str
+                        "views": 15, #int
+                        "year": 2016 #int
                     }
                 }""")
         if endpoints == 'Sign up':
@@ -176,11 +187,6 @@ if navi == 'Documentation':
             st.code('"Authorization": "refresh_token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
-            st.code("""{
-                "email": "johndoe@email.com", #str
-                "password": "password" #str
-            }""")
             st.write('Response - 200')
             st.code("""{
                 "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI
@@ -231,7 +237,7 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
-                "data": [
+                [
                     {
                         "_id": "6136c1543719c24549a6c0cf", #str
                         "brand": "Toyota", #str
@@ -323,7 +329,7 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
-                "Password updated"
+                "message": "Password updated"
             }""")
             pass
         if endpoints == 'Confirm Email':
@@ -335,11 +341,11 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                    "Email confirmed" #str
+                    "message": "Email confirmed" #str
             }""")
             st.write('Response - 403')
             st.code("""{
-                    "Email confirmation link expired" #expires after an hour
+                    "message": "Email confirmation link expired" #expires after an hour
             }""")
             pass
         if endpoints == 'Resend Confirmation':
@@ -369,26 +375,75 @@ if navi == 'Documentation':
             st.code("""{
                     "brand": "Honda", #str
                     "model": "Civic", #str
-                    "year": 2012, #int
-                    "colour": "Black", #str
-                    "condition": "Nigerian Used", #str
+                    "year": 2016, #int
+                    "colour": "Wine", #str
+                    "condition": "Foriegn Used", #str
                     "transmission": "Automatic", #str
-                    "mileage": "107000 km", #str
-                    "registered": true, #bool
+                    "mileage": "63000 km", #str
+                    "registered": true, #boolean
                     "location": "Lagos State, Ajah", #str
-                    "price": "3,000,000", #str
-                    "VIN": "DU4M4MYV7I3N", #str
-                    "negotiable": true, #bool
+                    "price": 6000000, #int
+                    "negotiable": true, #boolean
                     "fuel": "Petrol", #str
-                    "seats": "5", #str
-                    "verified": false, #bool
+                    "seats": "5 Seats",  #str
+                    "VIN": "HONDACIVIC412345678", #str
+                    "engine_type": "4-Plugs", #str
+                    "description": "Very nice", #str
                     "images": ["image_1", "image_2", "image_3", "image_4", "image_5", "image_6", "image_7"], #array
                     "main_image": "main_image", #str
             }""")
             st.write('Response - 200')
             st.code("""{
-                    'Reviewing' #str
+                    "message": 'Reviewing' #str
+
             }""")
+            pass
+        if endpoints == 'User Posts':
+            st.header('Gets all posts by user')
+            st.subheader('GET: www.carsplenty.com/api/v1/user-posts')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                [
+                    {
+                        "VIN": "TOYOTACOROLLA412345678", #str
+                        "_id": "61643ae0d0f9b0a3cc2ef433", #str
+                        "brand": "Toyota", #str
+                        "color": "Silver", #str
+                        "condition": "Foriegn Used", #str
+                        "description": "Pay and drive no faults", #str
+                        "engine": "4-Plugs", #str
+                        "fuel": "Petrol", #str
+                        "location": "Lagos State, VI", #str
+                        "mileage": "13000 km", #str
+                        "model": "Corolla", #str
+                        "posted": "32 minutes ago", #str
+                        "posted_by": "6147e6da086d3a037c8ff036", #str
+                        "price": 6500000, #int
+                        "promoted": false, #boolean
+                        "review_id": "63162224-8b7e-41b2-b000-21c0438fc009", #str
+                        "reviewed": true, #str
+                        "seat": "5 Seats", #str
+                        "status": true, #boolean
+                        "transmission": "Automatic", #str
+                        "views": 0, #int
+                        "year": 2017 #int
+                }""")
+            pass
+        if endpoints == 'Close Lisiting':
+            st.header('Close a ad posted by a user')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/close-listing/6161f697ebf4f47c9cda3fb9')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                   "message": "Listing closed"
+                }""")
             pass
         if endpoints == 'Follow User':
             st.header('Follow a favorite vehicle dealer')
@@ -399,7 +454,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                    "User followed"
+                   "message": "User followed"
                 }""")
             pass
         if endpoints == 'Unfollow User':
@@ -411,7 +466,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                    "User Unfollowed"
+                    "message": "User Unfollowed"
             }""")
             pass
         if endpoints == 'Save Vehicle':
@@ -421,10 +476,9 @@ if navi == 'Documentation':
             st.code('"Authorization": "Bearer Token"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Json request')
             st.write('Response - 200')
             st.code("""{
-                    "Saved"
+                   "message": "Vehicle Saved"
             }""")
             pass
         if endpoints == 'Saved Vehicles':
@@ -436,7 +490,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                [
+                [{
                     "_id": "6137d399750edde41dcb7a55",
                     "brand": "Honda",
                     "colour": "Black",
@@ -464,7 +518,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                    "Success"
+                    "message": "Vehicle removed"
                 }""")
             pass
         if endpoints == 'Trending deals':
@@ -474,31 +528,37 @@ if navi == 'Documentation':
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
-            st.write('Request parameter')
-            st.code("""{
-                "limit" = 5 
-                "offset" = 0
-            }""")
             st.write('Response - 200')
             st.code("""{
-                [{
-                    "_id": "6136be2d3719c24549a6c0ce", #str
-                    "brand": "Ford", #str
-                    "colour": "Brown", #str
-                    "condition": "Foriegn Used", #str
-                    "fuel": "Petrol", #str
-                    "location": "Lagos State, Ikeja", #str
-                    "main_image": "main_image", #str
-                    "model": "Edge", #str
-                    "posted": "Tue, 07 Sep 2021 02:19:35 GMT", #str
-                    "posted_by": "6133a854917812bea8c5a51c", #str
-                    "price": "3,000,000", #str
-                    "seat": "5", #str
-                    "transmission": "Automatic", #str
-                    "verified": true, #bool
-                    "views": 0, #int
-                    "year": "2009" #strr
-                },...]
+                "next_page": "?limit=5&offset=5",
+                "prev_page": "?limit=5&offset=-5",
+                "vehicles": [
+                    {
+                        "VIN": "HONDACIVIC412345678",
+                        "_id": "6162dd2a280fcec110a50d79",
+                        "brand": "Honda",
+                        "color": "Wine",
+                        "condition": "Foriegn Used",
+                        "description": "Very nice",
+                        "engine": "4-Plugs",
+                        "fuel": "Petrol",
+                        "location": "Lagos State, Ajah",
+                        "main_image": "image_main",
+                        "mileage": "63000 km",
+                        "model": "Civic",
+                        "posted": "1 day ago",
+                        "posted_by": "61266ddef4bf66e9ccdbe938",
+                        "price": 6000000,
+                        "promoted": false,
+                        "review_id": "e2c10c3e-215a-4756-98c6-14b80eb65595",
+                        "reviewed": true,
+                        "seat": "5",
+                        "status": true,
+                        "transmission": "Automatic",
+                        "views": 16,
+                        "year": 2016
+                    },...
+                ]
             }""")
             pass
         if endpoints == 'Start message':
@@ -517,7 +577,7 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
-                        "Sent"
+                        "message": ""Sent
                 }""")
             pass
         if endpoints == 'Send message':
@@ -534,7 +594,7 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{
-                    "Sent"
+                    "message": "Sent"
                 }""")
             pass
         if endpoints == 'Get messages':
@@ -588,7 +648,7 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
-                    "Deleted" #str
+                    "message": "Deleted" #str
                 }""")
             pass
     if sub_nav == 'Auction':
@@ -598,46 +658,47 @@ if navi == 'Documentation':
             'Auctions', 
             'Auction',
             'Bid',
+            'User Auctions'
         ])
         if endpoints == 'Auctions':
             st.header('Gets all vehicles up for auction')
-            st.subheader('GET: www.carsplenty.com/api/v1/auctions')
+            st.subheader('GET: www.carsplenty.com/api/v1/auctions?limit=5&offset=0')
             st.write('Headers')
-            st.code('"Authorization": "Bearer Token"')
+            st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
             st.code("""{
                     "next_page": "?limit=5&offset=5",
                     "prev_page": "?limit=5&offset=-5",
-                    "vehicles": [
+                    "auctions": [
                         {
-                            "_id": "615327251e50c460ebdf3289",
-                            "brand": "Toyota",
-                            "color": "Black",
-                            "completed": false,
-                            "condition": "Foreign Used",
-                            "current_bid": 550000,
-                            "end_time": "Sun, 03 Oct 2021 02:19:35 GMT",
-                            "fuel": "Petrol",
-                            "main_image": "main_image",
-                            "mileage": "166200 km",
-                            "minimum_bid": 500000,
-                            "model": "Matrix",
-                            "posted": "3 days ago",
-                            "selling_price": 700000,
-                            "start_time": "Fri, 01 Oct 2021 02:19:35 GMT",
-                            "status": true,
-                            "transmission": "Automatic",
-                            "year": "2007"
+                            "_id": "6156f8c9b180e6ad15fb970b", #str
+                            "brand": "Mercedes-Benz", #str
+                            "color": "Gray", #str
+                            "completed": false, #boolean
+                            "condition": "Nigerian Used", #str
+                            "current_bid": null, #None
+                            "end_time": "Tue, 05 Oct 2021 02:19:35 GMT", #str
+                            "fuel": "Petrol", #str
+                            "main_image": "main_image", #str
+                            "mileage": "112000 km", #str
+                            "minimum_bid": 2000000, #int
+                            "model": "C300", #str
+                            "posted": "1 week ago", #str
+                            "selling_price": 2500000, #int
+                            "start_time": "Sat, 02 Oct 2021 02:19:35 GMT", #str
+                            "status": false, #boolean
+                            "transmission": "Automatic", #str
+                            "year": "2009" 
                         },...]
                 }""")
             pass
         if endpoints == 'Auction':
             st.header('Gets details of vehicle up for auction')
-            st.subheader('GET: www.carsplenty.com/api/v1/auction/615327251e50c460ebdf3289')
+            st.subheader('GET: www.carsplenty.com/api/v1/auction/6156fb728fcf63d0a565e247')
             st.write('Headers')
-            st.code('"Authorization": "Bearer Token"')
+            st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
@@ -652,7 +713,7 @@ if navi == 'Documentation':
                                 "bidder_id": "61365a6b9578b7708a9791d3",
                                 "bidder_number": "07020006000",
                                 "time": "Tue, 28 Sep 2021 17:34:44 GMT"
-                            }
+                            },...
                         ],
                         "brand": "Toyota",
                         "color": "Black",
@@ -703,6 +764,38 @@ if navi == 'Documentation':
             }""")
             st.write('Response - 200')
             st.code("""{              
-                    "Bid placed"
+                    "message": "Bid placed"
+                }""")
+            pass
+        if endpoints == 'User Auctions':
+            st.header('Gets all active auctions user is currently participation')
+            st.subheader('GET: www.carsplenty.com/api/v1/bid')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                    "user-auctions": [
+                        {
+                            "_id": "6156f8c9b180e6ad15fb970b", #str
+                            "brand": "Mercedes-Benz", #str
+                            "color": "Gray", #str
+                            "completed": false, #boolean
+                            "condition": "Nigerian Used", #str
+                            "current_bid": null, #None
+                            "end_time": "Tue, 05 Oct 2021 02:19:35 GMT", #str
+                            "fuel": "Petrol", #str
+                            "main_image": "main_image", #str
+                            "mileage": "112000 km", #str
+                            "minimum_bid": 2000000, #int
+                            "model": "C300", #str
+                            "posted": "1 week ago", #str
+                            "selling_price": 2500000, #int
+                            "start_time": "Sat, 02 Oct 2021 02:19:35 GMT", #str
+                            "status": false, #boolean
+                            "transmission": "Automatic", #str
+                            "year": "2009" 
+                        },...]
                 }""")
             pass
