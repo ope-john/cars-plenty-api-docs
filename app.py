@@ -25,6 +25,7 @@ if navi == 'Documentation':
             'Login',
             'Refresh',
             'User',
+            'User Posts',
             'Search',
             'Filters',
             'Update Password',
