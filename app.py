@@ -570,10 +570,9 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                    "sender_id": "61266f7ef4bf66e9ccdbe939" #str,
-                    "receiver_id": "6126774a6456949ebda14bf0" #str,
-                    "message": "Is the car available?" #str,
-                    "vehicle_id": "613730553719c24549a6c0d4" #str
+                    "dealer_id": "61266ddef4bf66e9ccdbe938", #str
+                    "message": "Hello this is a test", #str
+                    "vehicle_id": "6162dd2a280fcec110a50d79" #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -589,8 +588,9 @@ if navi == 'Documentation':
             st.code('"Charset": "UTF-8"')
             st.write('Json request')
             st.code("""{
-                    "chat": "yes but there are a lot of potential buyers" #str,
-                    "message_id": "613f12713a08934396038836" #str
+                    "message": "test again", #str
+                    "vehicle_id": "6162dd2a280fcec110a50d79", #str
+                    "receiver_id": "61266ddef4bf66e9ccdbe938" #str
             }""")
             st.write('Response - 200')
             st.code("""{
@@ -605,39 +605,48 @@ if navi == 'Documentation':
             st.code('"Content-type": "Application/json"')
             st.code('"Charset": "UTF-8"')
             st.write('Response - 200')
-            st.code("""{
-                    "messages": [{
-                        "chats": [
-                            {
-                                "sent_by": "John Doe", #str
-                                "text": "Is the car still available?", #str
-                                "time": "Mon, 13 Sep 2021 09:49:23 GMT" #str
+            st.code("""[
+                        {
+                            "buyer_info": {
+                                "buyer_id": "6133a854917812bea8c5a51c",
+                                "buyer_name": "John Doe",
+                                "buyer_pic": null
                             },
-                            {
-                                "sent_by": "Jane Doe", #str
-                                "text": "yes but there are a lot of potential buyers", #str
-                                "time": "Mon, 13 Sep 2021 10:00:24 GMT" #str
-                            }
-                        ],
-                        "message_id": "613f12713a08934396038836", #str
-                        "receiver_info": {
-                            "receiver_id": "61266ddef4bf66e9ccdbe938", #str
-                            "receiver_name": "Jane Doe" #str
-                            },
-                            "sender_info": {
-                                "sender_id": "6133a854917812bea8c5a51c", #str
-                                "sender_name": "John Doe" #str
-                            },
-                        "vehicle_info": {
-                            "brand": "Toyota", #str
-                            "model": "Yaris", #str
-                            "year": "2014", #str
-                            "main_image": "image.jpg" #base64 str
-                            }
-                        }
-                    ]
-                },...]
-            }""")
+                            "dealer_info": {
+                                "dealer_id": "61266ddef4bf66e9ccdbe938",
+                                "dealer_name": "Jane Doe",
+                                "dealer_pic" "image"
+                             },
+                            "message": [
+                                {
+                                    "sender_id": "6133a854917812bea8c5a51c",
+                                    "sent_by": "John Doe",
+                                    "text": "Hello this is a test",
+                                    "time": "Wed, 13 Oct 2021 00:24:50 GMT"
+                                },
+                                {
+                                    "sender_id": "61266ddef4bf66e9ccdbe938",
+                                    "sent_by": "Jane Doe",
+                                    "text": "okay",
+                                    "time": "Wed, 13 Oct 2021 00:45:08 GMT"
+                                },
+                                {
+                                    "sender_id": "6133a854917812bea8c5a51c",
+                                    "sent_by": "John Doe",
+                                    "text": "test done",
+                                    "time": "Wed, 13 Oct 2021 00:45:08 GMT"
+                                }
+                            ],
+                            "message_id": "61661c72471edfd32fb9e9af",
+                            "vehicle_info": {
+                                "brand": "Honda",
+                                "image": "image",
+                                "model": "Civic",
+                                "vehicle_id": "6162dd2a280fcec110a50d79",
+                                "year": 2016
+        }
+    }
+            ]""")
             pass
         if endpoints == 'Delete message':
             st.header('Delete a message with another user')
