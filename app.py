@@ -14,7 +14,7 @@ if navi == 'Home':
 if navi == 'Documentation':
     sub_nav = st.sidebar.selectbox(
     "Docs",
-    ['App', 'Auction', 'Wallet'])
+    ['App', 'Auction', 'Wallet', 'Admin'])
     if sub_nav == 'App':
         endpoints = st.sidebar.selectbox(
         "Endpoints",
@@ -38,6 +38,7 @@ if navi == 'Documentation':
             'Saved Vehicles',
             'Unsave Vehicle',
             'Trending deals',
+            'Verified deals',
             'Get messages',
             'Start message',
             'Send message',
@@ -562,6 +563,46 @@ if navi == 'Documentation':
                 ]
             }""")
             pass
+        if endpoints == 'Verified deals':
+            st.header('Gets all verified deals')
+            st.subheader('GET: www.carsplenty.com/api/v1/verified?limit=5&offset=0')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                "next_page": "?limit=5&offset=5",
+                "prev_page": "?limit=5&offset=-5",
+                "vehicles": [
+                    {
+                        "VIN": "HONDACIVIC412345678",
+                        "_id": "6162dd2a280fcec110a50d79",
+                        "brand": "Honda",
+                        "color": "Wine",
+                        "condition": "Foriegn Used",
+                        "description": "Very nice",
+                        "engine": "4-Plugs",
+                        "fuel": "Petrol",
+                        "location": "Lagos State, Ajah",
+                        "main_image": "image_main",
+                        "mileage": "63000 km",
+                        "model": "Civic",
+                        "posted": "1 day ago",
+                        "posted_by": "61266ddef4bf66e9ccdbe938",
+                        "price": 6000000,
+                        "promoted": false,
+                        "review_id": "e2c10c3e-215a-4756-98c6-14b80eb65595",
+                        "reviewed": true,
+                        "seat": "5",
+                        "status": true,
+                        "transmission": "Automatic",
+                        "views": 16,
+                        "year": 2016
+                    },...
+                ]
+            }""")
+            pass
         if endpoints == 'Start message':
             st.header('Start a message with another user')
             st.subheader('POST: www.carsplenty.com/api/v1/start-message')
@@ -808,4 +849,245 @@ if navi == 'Documentation':
                             "year": "2009" 
                         },...]
                 }""")
+            pass
+    if sub_nav == 'Admin':
+        endpoints = st.sidebar.selectbox(
+        "Endpoints",
+        [
+            'Admin Sign up', 
+            'Admin Login',
+            'Refresh',
+            'Confirm Email',
+            'Admin User',
+            'Assigned Vehicles',
+            'Review Vehicle'
+            'Assign Level',
+            'Approve Vehicle',
+            'Decline Vehicle',
+            'Verify User',
+            'Get Admins'
+        ])
+        if endpoints == 'Admin Sign up':
+            st.header('Admin sign up endpoint')
+            st.subheader('POST: www.carsplenty.com/api/v1/admin/signup')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "name": "Kene Doe",
+                    "email": "kenedoe@carsplenty.com",
+                    "password": "password"
+            }""")
+            st.write('Response - 200')
+            st.code("""{              
+                    "message": "Success"
+                }""")
+            pass
+        if endpoints == 'Admin Login':
+            st.header('Admin login endpoint')
+            st.subheader('POST: www.carsplenty.com/api/v1/admin/login')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "email": "kenedoe@carsplenty.com",
+                    "password": "password"
+            }""")
+            st.write('Response - 200')
+            st.code("""{              
+                    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNDE1OTg1NSwianRpIjoiZjk5MjIzNmUtMjc2MC00ZmZiLTgwOTQtZmZmMTkyOWQwN2EyIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2MTY3NGM5MTJiYjBiYzA4ZDMyM2IwOTEiLCJuYmYiOjE2MzQxNTk4NTUsImV4cCI6MTYzNTQ1NTg1NX0.4M_xLZj6qNOKFBYvwyLA4xCdi72ASskbvSZ24zMhuKo",
+                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjM0MTU5ODU1LCJqdGkiOiI5ZGMyZTdiYS1jOTQ0LTRhZTEtOWNlOC0wZDk1MjE4NTAxMjkiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNjE2NzRjOTEyYmIwYmMwOGQzMjNiMDkxIiwibmJmIjoxNjM0MTU5ODU1LCJleHAiOjE2MzQxNjE2NTV9.DHOYQ6X-T1LxPgFjk_qkmThKIl30V81KJA0C_KwRE18"
+                }""")
+            pass
+        if endpoints == 'Refresh':
+            st.header('Refresh admin access token')
+            st.subheader('POST: www.carsplenty.com/api/v1/admin/refresh')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Refresh Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjM0MTU5ODU1LCJqdGkiOiI5ZGMyZTdiYS1jOTQ0LTRhZTEtOWNlOC0wZDk1MjE4NTAxMjkiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNjE2NzRjOTEyYmIwYmMwOGQzMjNiMDkxIiwibmJmIjoxNjM0MTU5ODU1LCJleHAiOjE2MzQxNjE2NTV9.DHOYQ6X-T1LxPgFjk_qkmThKIl30V81KJA0C_KwRE18"
+                }""")
+            pass
+        if endpoints == 'Confirm Email':
+            st.header('Confirm email upon sign up')
+            st.subheader('GET: www.carsplenty.com/api/v1/admin/confirm-email/<email_token>')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                    "message": "Email Confirmed"
+                }""")
+            pass
+        if endpoints == 'Admin Users':
+            st.header('Gets admin user details')
+            st.subheader('GET: www.carsplenty.com/api/v1/admin/profile')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Refresh Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                    "user_data": {
+                        "account_created": "3 minutes ago",
+                        "admin_level": 0,
+                        "email": "kenedoe@carsplenty.com",
+                        "last_seen": "3 minutes ago",
+                        "name": "Kene Doe",
+                        "profile_picture": null,
+                        "user_id": "61674c912bb0bc08d323b091"
+                    }
+                }""")
+            pass
+        if endpoints == 'Assigned Vehicles':
+            st.header('Gets admin user details')
+            st.subheader('GET: www.carsplenty.com/api/v1/admin/assigned-vehicles')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""[              
+                            {
+                                "brand": "Hyundia",
+                                "model": "Creta",
+                                "price": 4600000,
+                                "review_id": "5099bc39-efd8-4e26-8b70-e2f5ef86b375",
+                                "year": 2016
+                            },...
+                    ]
+                }""")
+            pass
+        if endpoints == 'Review Vehicle':
+            st.header('Gets vehicles assigned to admin')
+            st.subheader('GET: www.carsplenty.com/api/v1/admin/review/<review_id>')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{              
+                        "VIN": "HYUNDIACRETA412345678",
+                        "_id": "616795102bb0bc08d323b092",
+                        "brand": "Hyundia",
+                        "color": "Black",
+                        "condition": "Foriegn Used",
+                        "description": "Unpainted Original parts",
+                        "engine": "4-Plugs",
+                        "fuel": "Petrol",
+                        "images": [images],
+                        "location": "Lagos State, Ikoyi",
+                        "main_image": "image",
+                        "mileage": "63000 km",
+                        "model": "Creta",
+                        "negotiable": false,
+                        "posted": "Wed, 13 Oct 2021 22:15:28 GMT",
+                        "posted_by": "6138fb14ffc8062b5c967e52",
+                        "price": 4600000,
+                        "promoted": false,
+                        "registered": false,
+                        "review_id": "5099bc39-efd8-4e26-8b70-e2f5ef86b375",
+                        "reviewed": false,
+                        "seat": "5",
+                        "status": true,
+                        "transmission": "Automatic",
+                        "views": 0,
+                        "year": 2016
+                }""")
+            pass
+        if endpoints == 'Approve Vehicle':
+            st.header('Approve a vehicle up for review')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/admin/approve/<review_id>')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Approved"
+                }""")
+            pass
+        if endpoints == 'Decline Vehicle':
+            st.header('Decline a vehicle up for review')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/admin/decline/<review_id>')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Approved"
+                }""")
+            pass
+        if endpoints == 'Decline Vehicle':
+            st.header('Decline a vehicle up for review')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/admin/decline/<review_id>')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Declined"
+                }""")
+            pass
+        if endpoints == 'Assign Level':
+            st.header('Super user assign admin level')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/admin/assign-level')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Json request')
+            st.code("""{
+                    "admin_id": "61552618cc8a56cfa932ade1",
+                    "level": 3
+            }""")
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "Level assigned"
+                }""")
+            pass
+        if endpoints == 'Verify User':
+            st.header('Admin verify users')
+            st.subheader('PATCH: www.carsplenty.com/api/v1/admin/verify/<user_id>')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                    "message": "User Verified"
+                }""")
+            pass
+        if endpoints == 'Get Admins':
+            st.header('Get all admins only for level 2 and above')
+            st.subheader('GET: www.carsplenty.com/api/v1/admin/get-admins')
+            st.write('Headers')
+            st.code('"Authorization": "Bearer Token"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""[
+                        {
+                            "email": "superadmin@carsplenty.com",
+                            "last_login": "Thu, 14 Oct 2021 06:22:14 GMT",
+                            "level": 3,
+                            "name": "Super Admin"
+                        },
+                        {
+                            "email": "bami@carsplenty.com",
+                            "last_login": "Thu, 23 Sep 2021 11:16:02 GMT",
+                            "level": 1,
+                            "name": "Bami Doe"
+                        },...
+                ]""")
             pass
