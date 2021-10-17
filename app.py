@@ -39,11 +39,12 @@ if navi == 'Documentation':
             'Unsave Vehicle',
             'Trending deals',
             'Verified deals',
+            'Hot deals',
             'Get messages',
             'Start message',
             'Send message',
             'Delete message',
-            'Close Lisitng'])
+            'Close Lisitng',])
         if endpoints == 'Vehicles':
             st.header('Gets all vehicles in the database')
             st.subheader('GET: www.carsplenty.com/api/v1/vehicles?limit=5&offset=0')
@@ -566,6 +567,46 @@ if navi == 'Documentation':
         if endpoints == 'Verified deals':
             st.header('Gets all verified deals')
             st.subheader('GET: www.carsplenty.com/api/v1/verified?limit=5&offset=0')
+            st.write('Headers')
+            st.code('"Authorization": "None"')
+            st.code('"Content-type": "Application/json"')
+            st.code('"Charset": "UTF-8"')
+            st.write('Response - 200')
+            st.code("""{
+                "next_page": "?limit=5&offset=5",
+                "prev_page": "?limit=5&offset=-5",
+                "vehicles": [
+                    {
+                        "VIN": "HONDACIVIC412345678",
+                        "_id": "6162dd2a280fcec110a50d79",
+                        "brand": "Honda",
+                        "color": "Wine",
+                        "condition": "Foriegn Used",
+                        "description": "Very nice",
+                        "engine": "4-Plugs",
+                        "fuel": "Petrol",
+                        "location": "Lagos State, Ajah",
+                        "main_image": "image_main",
+                        "mileage": "63000 km",
+                        "model": "Civic",
+                        "posted": "1 day ago",
+                        "posted_by": "61266ddef4bf66e9ccdbe938",
+                        "price": 6000000,
+                        "promoted": false,
+                        "review_id": "e2c10c3e-215a-4756-98c6-14b80eb65595",
+                        "reviewed": true,
+                        "seat": "5",
+                        "status": true,
+                        "transmission": "Automatic",
+                        "views": 16,
+                        "year": 2016
+                    },...
+                ]
+            }""")
+            pass
+        if endpoints == 'Hot deals':
+            st.header('Gets all hot deals')
+            st.subheader('GET: www.carsplenty.com/api/v1/hot-deals?limit=5&offset=0')
             st.write('Headers')
             st.code('"Authorization": "None"')
             st.code('"Content-type": "Application/json"')
