@@ -899,9 +899,9 @@ if navi == 'Documentation':
             'Admin Login',
             'Refresh',
             'Confirm Email',
-            'Admin User',
+            'Admin Users',
             'Assigned Vehicles',
-            'Review Vehicle'
+            'Review Vehicle',
             'Assign Level',
             'Approve Vehicle',
             'Decline Vehicle',
